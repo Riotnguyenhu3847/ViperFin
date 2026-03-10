@@ -1,0 +1,158 @@
+{
+  "signatures": [
+    {
+      "hash": "e6573e91e6eb777c0933c5b8f97f10cd",
+      "label": "Chrome 107+ (Windows)",
+      "category": "browser",
+      "threat_level": "benign",
+      "notes": "Standard Chrome TLS fingerprint on Windows"
+    },
+    {
+      "hash": "66918128f1b9b03303d77c6f2eefd128",
+      "label": "Firefox 105+ (Windows)",
+      "category": "browser",
+      "threat_level": "benign",
+      "notes": "Standard Firefox TLS fingerprint"
+    },
+    {
+      "hash": "d187374763fd720e67f66e5a75da5dc0",
+      "label": "Safari 16 (macOS)",
+      "category": "browser",
+      "threat_level": "benign",
+      "notes": "Standard Safari TLS fingerprint"
+    },
+    {
+      "hash": "4d7a28d6f2263ed61de88ca66eb011e3",
+      "label": "curl/libcurl (default)",
+      "category": "tool",
+      "threat_level": "benign",
+      "notes": "Default curl TLS fingerprint — common in legitimate scripts and automation"
+    },
+    {
+      "hash": "7c02fb0ebb67e8fc89e32c4de3f5eba8",
+      "label": "Python requests library",
+      "category": "tool",
+      "threat_level": "benign",
+      "notes": "Default Python requests/urllib3 TLS fingerprint"
+    },
+    {
+      "hash": "b32309a26951912be7dba376398abc3b",
+      "label": "Go net/http (default)",
+      "category": "tool",
+      "threat_level": "benign",
+      "notes": "Default Go standard library HTTP client"
+    },
+    {
+      "hash": "a0e9f5d64349fb13191bc781f81f42e1",
+      "label": "Metasploit Framework",
+      "category": "pentest_tool",
+      "threat_level": "suspicious",
+      "notes": "Metasploit reverse_tcp/meterpreter TLS fingerprint — may indicate pentest activity"
+    },
+    {
+      "hash": "6bea65232d17d4884c427918d6c3abf0",
+      "label": "Cobalt Strike (default beacon)",
+      "category": "malware_c2",
+      "threat_level": "malicious",
+      "notes": "Default Cobalt Strike malleable C2 profile — HIGH PRIORITY alert in production environments"
+    },
+    {
+      "hash": "72a589da586844d7f0818ce684948eea",
+      "label": "Cobalt Strike (variant)",
+      "category": "malware_c2",
+      "threat_level": "malicious",
+      "notes": "Cobalt Strike variant fingerprint — cross-reference with destination IP reputation"
+    },
+    {
+      "hash": "e7d705a3286e19ea42f587b6622a26ff",
+      "label": "Emotet C2",
+      "category": "malware_c2",
+      "threat_level": "malicious",
+      "notes": "Emotet banking trojan C2 communication pattern"
+    },
+    {
+      "hash": "6a1ebd1c52b40ab028c5e0fd72b94069",
+      "label": "TrickBot",
+      "category": "malware_c2",
+      "threat_level": "malicious",
+      "notes": "TrickBot modular trojan TLS fingerprint"
+    },
+    {
+      "hash": "2a4deb3a97e7b4aa15a69e5b271cbbe0",
+      "label": "Dridex",
+      "category": "malware_c2",
+      "threat_level": "malicious",
+      "notes": "Dridex banking malware C2 TLS pattern"
+    },
+    {
+      "hash": "c35b1e88ced315fc9ba3b50b31a49ea0",
+      "label": "QakBot (QBot)",
+      "category": "malware_c2",
+      "threat_level": "malicious",
+      "notes": "QakBot banking trojan TLS fingerprint"
+    },
+    {
+      "hash": "abc5b5765ca1e7d7cac80b9db3f41b20",
+      "label": "Nmap SSL scan",
+      "category": "scanner",
+      "threat_level": "suspicious",
+      "notes": "Nmap ssl-enum-ciphers script or similar scanner"
+    },
+    {
+      "hash": "1aa7bf8b40a942b5d49c969af7b66e9b",
+      "label": "Masscan TLS probe",
+      "category": "scanner",
+      "threat_level": "suspicious",
+      "notes": "Masscan internet-wide TLS scanning fingerprint"
+    },
+    {
+      "hash": "8a4bdf44c9b16e369f2b9e4fecc0e740",
+      "label": "Shodan crawler",
+      "category": "scanner",
+      "threat_level": "info",
+      "notes": "Shodan.io internet scanner — your server is indexed"
+    },
+    {
+      "hash": "3b5074b1b5d032e5620f69f9159ead0b",
+      "label": "Tor Browser",
+      "category": "browser",
+      "threat_level": "info",
+      "notes": "Tor Browser Bundle TLS fingerprint — anonymized traffic"
+    },
+    {
+      "hash": "05af1f5ca1b87cc9cc9b25185115607d",
+      "label": "OpenSSL s_client",
+      "category": "tool",
+      "threat_level": "info",
+      "notes": "OpenSSL command-line TLS client — common in legitimate testing"
+    },
+    {
+      "hash": "9e10692f1b7f78228b2d4e424db3a98c",
+      "label": "Wget (default)",
+      "category": "tool",
+      "threat_level": "benign",
+      "notes": "GNU Wget default TLS fingerprint"
+    },
+    {
+      "hash": "aa1dc615568dc46e38de7b6c35da6c73",
+      "label": "Java HttpsURLConnection",
+      "category": "tool",
+      "threat_level": "info",
+      "notes": "Default Java HTTPS client — may indicate Java-based malware or legitimate app"
+    },
+    {
+      "hash": "839bbe3ed07fed922ded5aaf714d6842",
+      "label": "Sliver C2",
+      "category": "malware_c2",
+      "threat_level": "malicious",
+      "notes": "Sliver open-source C2 framework — increasingly used by threat actors"
+    },
+    {
+      "hash": "51c64c77e60f3980eea90869b68c58a8",
+      "label": "Brute Ratel C4",
+      "category": "malware_c2",
+      "threat_level": "malicious",
+      "notes": "Brute Ratel C4 adversary simulation tool — used by APT groups"
+    }
+  ]
+}

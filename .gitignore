@@ -1,0 +1,31 @@
+# Compiled binaries
+viperfin
+viperfin.exe
+*.exe
+*.out
+*.bin
+
+# Build output directory
+build/
+dist/
+
+# Go build cache
+*.test
+*.prof
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Personal notes
+Imported from Kali.txt
+
+# Leftover output paths
+mnt/
