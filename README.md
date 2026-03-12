@@ -12,6 +12,35 @@ expects from clients.
 
 ---
 
+## Changelog
+
+### v1.1.0 (2026-03-13)
+
+**Bug fixes (compilation)**
+- Moved `db/lookup.go` to `cmd/lookup.go` — fixed circular self-import that prevented compilation
+- Fixed undefined `signaturesJSON` variable → changed to `JA3Signatures` (the actual embed var)
+- Created missing `tls/server.go` — `cmd/server.go` called `ServerMode()` and `ClientConnection` which didn't exist
+
+**Bug fixes (runtime)**
+- Fixed nil pointer panic when `result.ClientJA3` was nil in `report/output.go`
+- Fixed `json.MarshalIndent` error being silently dropped — now prints to stderr and exits
+- Fixed `--insecure` flag declared but dead (`_ = insecure`) — now wired through to `ConnectAndCapture`
+- Fixed `InsecureSkipVerify` hardcoded to `false` — now uses the `insecure` bool parameter
+- Fixed `portStr` variable typed as int — renamed to `port`
+- Fixed `ThreatInfo` not handled in stats switch — added `case db.ThreatInfo`
+- Fixed `fmt.Println(banner)` trailing newline — changed to `fmt.Print`
+- Fixed missing `os` import in `report/output.go`
+
+**Added**
+- `tls/ja3_test.go` — 5 unit tests: hash format, GREASE filtering, JA3S, determinism, version names
+- `tls/parser_test.go` — 7 unit tests: basic parse, truncated data, wrong types, hex round-trip
+- `db/signatures_test.go` — 7 unit tests: count, lookup, case-insensitivity, unknown hashes, colors, icons
+- `.github/workflows/ci.yml` — CI pipeline: `go vet` + tests with `-race` + cross-compile for 5 platforms on every push/PR
+- `build.sh` — cross-compiles for Linux amd64/arm64, Windows amd64, macOS amd64/arm64
+
+### v1.0.0 (2026-03-11)
+Initial release.
+
 ## How JA3 Works
 
 Every TLS connection starts with a **ClientHello** message. Before any encryption
