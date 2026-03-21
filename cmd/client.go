@@ -46,6 +46,12 @@ func RunClient(args []string) {
 
 	fmt.Printf("[*] Target:  %s\n", target)
 	fmt.Printf("[*] Database: %d known signatures loaded\n", db.Count())
+	// FIX: print a visible warning when certificate verification is disabled
+	// so the user cannot silently miss a cert mismatch that may itself be an
+	// indicator of compromise (e.g. MITM, expired cert on a monitored target).
+	if *insecure {
+		fmt.Printf("[!] Warning: TLS certificate verification is DISABLED (--insecure)\n")
+	}
 
 	result, err := tlspkg.ConnectAndCapture(host, port, *verbose, *insecure)
 	if err != nil {

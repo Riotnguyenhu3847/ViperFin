@@ -32,9 +32,14 @@ func ServerMode(port int, verbose bool) (<-chan *ClientConnection, chan struct{}
 		return nil, nil, fmt.Errorf("generating self-signed cert: %w", err)
 	}
 
+	// FIX: Use TLS 1.2 minimum on the server listener. The fingerprint is
+	// extracted from the ClientHello, so the negotiated version does not affect
+	// JA3 accuracy. Allowing TLS 1.0/1.1 on our own listener adds attack
+	// surface with no benefit. Client mode intentionally keeps TLS 1.0 to
+	// ensure legacy servers accept the handshake for fingerprinting purposes.
 	tlsConfig := &tls.Config{
 		Certificates: []tls.Certificate{cert},
-		MinVersion:   tls.VersionTLS10,
+		MinVersion:   tls.VersionTLS12,
 	}
 
 	// Use a raw TCP listener so we can intercept the ClientHello before TLS wrapping.
@@ -102,6 +107,13 @@ func handleServerConn(rawConn net.Conn, tlsConfig *tls.Config, results chan<- *C
 
 	// Parse the ClientHello from bytes the server received.
 	if len(capture.read) > 0 {
+		// FIX: warn when the ClientHello hit the capture buffer ceiling.
+		// A truncated ClientHello produces a wrong JA3 hash that will never
+		// match any known signature.
+		if capture.ReadTruncated() {
+			fmt.Printf("[!] Warning: ClientHello from %s exceeded capture buffer (%d bytes) — JA3 may be incomplete\n",
+				result.RemoteAddr, maxCaptureBytes)
+		}
 		hello, err := ParseClientHello(capture.read)
 		if err != nil {
 			if verbose {

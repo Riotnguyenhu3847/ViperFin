@@ -3,7 +3,6 @@ package tls
 import (
 	"crypto/md5"
 	"fmt"
-	"sort"
 	"strconv"
 	"strings"
 )
@@ -220,16 +219,3 @@ var CurveNames = map[uint16]string{
 	257: "ffdhe3072",
 }
 
-// SortedCurveNames returns sorted curve names for display.
-func SortedCurveNames(curves []uint16) []string {
-	names := make([]string, 0, len(curves))
-	for _, c := range curves {
-		if name, ok := CurveNames[c]; ok {
-			names = append(names, name)
-		} else {
-			names = append(names, fmt.Sprintf("unknown(%d)", c))
-		}
-	}
-	sort.Strings(names)
-	return names
-}

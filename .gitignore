@@ -24,8 +24,12 @@ dist/
 Thumbs.db
 desktop.ini
 
-# Personal notes
-Imported from Kali.txt
-
 # Leftover output paths
 mnt/
+
+# Credential and secret files — never commit
+*.password
+*.secret
+*.key
+*.pem
+*.pfx

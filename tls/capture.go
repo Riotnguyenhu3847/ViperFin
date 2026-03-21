@@ -123,6 +123,11 @@ func ConnectAndCapture(host string, port int, verbose, insecure bool) (*CaptureR
 			result.CertExpiry = cert.NotAfter
 		}
 
+		// FIX: warn if the server response was truncated at the capture limit
+		if capture.ReadTruncated() {
+			fmt.Printf("[!] Warning: server response exceeded capture buffer (%d bytes) — JA3S may be incomplete\n", maxCaptureBytes)
+		}
+
 		// Capture ServerHello from received bytes
 		if len(capture.read) > 0 {
 			serverHello, shErr := ParseServerHello(capture.read)
@@ -149,13 +154,25 @@ func (c *captureConn) Write(b []byte) (n int, err error) {
 	return c.Conn.Write(b)
 }
 
+// maxCaptureBytes is the maximum number of bytes captured from the peer.
+// 16 384 bytes == one full TLS record (the maximum TLS record size),
+// which is sufficient for any ClientHello or ServerHello in practice.
+// The previous 4 096-byte limit could silently truncate large ClientHellos
+// (e.g. TLS 1.3 with many extensions or a post-quantum key share).
+const maxCaptureBytes = 16384
+
 func (c *captureConn) Read(b []byte) (n int, err error) {
 	n, err = c.Conn.Read(b)
-	if n > 0 && len(c.read) < 4096 {
-		// Only capture first 4KB (enough for ServerHello)
+	if n > 0 && len(c.read) < maxCaptureBytes {
 		c.read = append(c.read, b[:n]...)
 	}
 	return n, err
+}
+
+// ReadTruncated returns true if the captured read buffer hit the size limit.
+// When true, ParseClientHello / ParseServerHello may have received incomplete data.
+func (c *captureConn) ReadTruncated() bool {
+	return len(c.read) >= maxCaptureBytes
 }
 
 // TLSVersionName returns a human-readable TLS version string.
